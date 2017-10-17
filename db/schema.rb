@@ -11,6 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20171017122142) do
+
+  create_table "blogs", force: :cascade do |t|
+    t.string   "title",                  limit: 255,   null: false
+    t.text     "contents",               limit: 65535, null: false
+    t.string   "eye_catch_file_name",    limit: 255,   null: false
+    t.string   "eye_catch_content_type", limit: 255,   null: false
+    t.integer  "eye_catch_file_size",    limit: 4,     null: false
+    t.datetime "eye_catch_updated_at",                 null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
 
 end

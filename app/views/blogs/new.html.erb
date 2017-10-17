@@ -1,0 +1,4 @@
+<%= simple_form_for(Blog.new, url: blogs_path, :method => :post) do |f| %>
+  <% f.file_field :eye_catch %>
+  <%= render "form", f: f %>
+<% end %>

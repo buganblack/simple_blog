@@ -260,7 +260,7 @@ sns
 
 .nav-link { font-size: 30px; font-weight: bold; color: black; font-family: Helvetica, Arial, メイリオ, Meiryo, sans-serif; }
 
-.nav.is-active { -webkit-transform: translateX(0); -ms-transform: translateX(0); transform: translateX(0); }
+.nav-toggle { -webkit-transform: translateX(0); -ms-transform: translateX(0); transform: translateX(0); }
 
 .button { width: 100%; background-color: #333; display: block; }
 

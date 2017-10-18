@@ -1,0 +1,72 @@
+<div class="l-wrap js-wrap">
+  <div class="l-header  js-header">
+    <div class="l-header-top u-clear">
+      <div class="l-header-logo">
+        <div class="logo ">
+          <%= image_tag("logo.png", height: "28", width: "138") %>
+        </div>
+      </div>
+      <div class="l-header-hamburger">
+        <a href="#" class="hamburger js-hamburger">
+          <span class="hamburger-item"></span>
+          <span class="hamburger-item"></span>
+          <span class="hamburger-item"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav js-nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+      <a href="#" class="nav-link">TOP</a>
+      </li>
+      <li class="nav-item">
+      <a href="#" class="nav-link">Facebook</a>
+      </li>
+      <li class="nav-item">
+      <a href="#" class="nav-link">Twitter</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="l-container u-clear">
+    <div class="l-main js-main">
+      <div class="l-main-block"></div>
+      <div class="archive">
+        <ul class="archive-list">
+          <% @blogs.each do |blog| %>
+            <li class="archive-item">
+              <article class="card">
+                <a href="#" class="card-link">
+                  <%= image_tag blog.eye_catch.url(:original) %>
+                  <div class="card-bottom">
+                    <h1 class="card-title"><%= blog.title %></h1>
+                    <time class="card-date" datetime="2016-9-16">
+                      <%= blog.created_at.strftime("%F") %>
+                    </time>
+                  </div>
+                </a>
+              </article>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <%= link_to "More", archive_blogs_path, class: "archive-button button button-text" %>
+    </div>
+  </div>
+
+  <div class="l-footer ">
+    <div class="l-footer-button">
+      <a class="page-top js-scroll" href="#top" id ="backToTopBtn">
+        <span class="page-top-arrow"></span>
+      </a>
+    </div>
+    <div class="l-footer-copyright">
+      <small class="copyright">&copy;copyright</small>
+    </div>
+  </div>
+</div>
+<% content_for :extra_javascripts do %>
+  <%= javascript_include_tag "url_shortener" %>
+<% end %>

@@ -2,9 +2,9 @@
   <div class="l-header l-header-admin js-header">
     <div class="l-header-top u-clear">
       <div class="l-header-logo">
-        <a class="logo " href="./">
+        <%= link_to root_path, class: "logo" do %>
           <%= image_tag("logo-admin.png", height: "28", width: "138") %>
-        </a>
+        <% end %>
       </div>
       <div class="l-header-text">
         <p>ADMIN PAGE</p>
@@ -15,7 +15,7 @@
   <div class="l-container u-clear content">
     <div class="l-main-block"></div>
     <div style="color: red;"><%= flash[:notice] if flash[:notice]  %></div>
-    <%= form_for @admin_user, url: admins_path do |f| %>
+    <%= form_for @admin_user, url: admin_index_path do |f| %>
       <label for="user-id" class="form-title">USER ID</label>
       <%= f.text_field :username, class: "input input-text", id: "user-id" %>
       <label for="password" class="form-title">PASSWORD</label>

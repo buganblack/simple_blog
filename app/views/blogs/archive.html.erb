@@ -1,0 +1,123 @@
+<div class="l-wrap js-wrap">
+  <div class="l-header  js-header">
+    <div class="l-header-top u-clear">
+      <div class="l-header-logo">
+        <div class="logo ">
+          <%= image_tag("logo.png", height: "28", width: "138") %>
+        </div>
+      </div>
+      <%= render "toggle_list" %>
+    </div>
+  </div>
+
+  <div class="l-container u-clear">
+    <main class="l-main js-main">
+      <div class="l-main-block"></div>
+      <div class="page-number">
+        Page <span >1/4</span>
+      </div>
+      <div class="archive">
+        <ul class="archive-list">
+
+          <li class="archive-item">
+          <article class="card">
+            <a href="#" class="card-link">
+              <img src="../assets/images/sample1.jpg" alt="" class="card-image">
+              <div class="card-bottom">
+                <h1 class="card-title">The Best Wii U Games of 2016</h1>
+                <time class="card-date" datetime="2016-9-16">
+                  16 Sep, 2016
+                </time>
+              </div>
+            </a>
+          </article>
+          </li>
+
+          <li class="archive-item">
+          <article class="card">
+            <a href="#" class="card-link">
+              <img src="../assets/images/sample2.jpg" alt="" class="card-image">
+              <div class="card-bottom">
+                <h1 class="card-title">VOTING FOR THE PEOPLE&#39;S CHOICE BEST WII U GAME OF 2016!</h1>
+                <time class="card-date" datetime="2016-9-16">
+                  16 Sep, 2016
+                </time>
+              </div>
+            </a>
+          </article>
+          </li>
+
+          <li class="archive-item">
+          <article class="card">
+            <a href="#" class="card-link">
+              <img src="../assets/images/sample3.jpg" alt="" class="card-image">
+              <div class="card-bottom">
+                <h1 class="card-title">Gears of War film to rise like a Fenix thanksto Universal</h1>
+                <time class="card-date" datetime="2016-9-16">
+                  16 Sep, 2016
+                </time>
+              </div>
+            </a>
+          </article>
+          </li>
+
+          <li class="archive-item">
+          <article class="card">
+            <a href="#" class="card-link">
+              <img src="../assets/images/sample4.jpg" alt="" class="card-image">
+              <div class="card-bottom">
+                <h1 class="card-title">Trailer Roundup - October 5, 2016</h1>
+                <time class="card-date" datetime="2016-9-16">
+                  16 Sep, 2016
+                </time>
+              </div>
+            </a>
+          </article>
+          </li>
+
+          <li class="archive-item">
+          <article class="card">
+            <a href="#" class="card-link">
+              <img src="../assets/images/sample5.jpg" alt="" class="card-image">
+              <div class="card-bottom">
+                <h1 class="card-title">PlayStation VR: A Hardcore Console Gamer’s Perspective</h1>
+                <time class="card-date" datetime="2016-9-16">
+                  16 Sep, 2016
+                </time>
+              </div>
+            </a>
+          </article>
+          </li>
+
+        </ul>
+      </div>
+      <div class="paginate">
+        <a href="#" class="paginate-prev is-disable">
+          <span class="paginate-prev-arrow"></span>
+        </a>
+        <a href="#" class="paginate-number is-current">1</a>
+        <a href="#" class="paginate-number">2</a>
+        <a href="#" class="paginate-number">3</a>
+        <a href="#" class="paginate-number">4</a>
+        <a href="#" class="paginate-next">
+          <span class="paginate-next-arrow"></span>
+        </a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dove class="l-footer ">
+<div class="l-footer-button">
+  <a class="page-top js-scroll" href="#js-body" id ="backToTopBtn">
+    <span class="page-top-arrow"></span>
+  </a>
+</div>
+<div class="l-footer-copyright">
+  <small class="copyright">&copy;copyright</small>
+</div>
+</div>
+
+<% content_for :extra_javascripts do %>
+<%= javascript_include_tag "url_shortener" %>
+<% end %>

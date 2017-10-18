@@ -2,12 +2,12 @@
   <div class="l-header l-header-admin js-header">
     <div class="l-header-top u-clear">
       <div class="l-header-logo">
-        <a class="logo " href="./">
+        <%= link_to root_path, class: "logo" do %>
           <%= image_tag("logo-admin.png", height: "28", width: "138") %>
-        </a>
+        <% end %>
       </div>
       <div class="l-header-text">
-        <%= link_to "LOGOUT", logout_admins_path %>
+        <%= link_to "LOGOUT", logout_admin_index_path %>
       </div>
     </div>
   </div>

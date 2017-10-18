@@ -1,7 +1,7 @@
-class AdminsController < ApplicationController
+class AdminController < ApplicationController
   def index
     if session[:current_user]
-      redirect_to "/admin_blogs"
+      redirect_to blogs_admin_index_path
     else
       @admin_user = AdminUser.new
     end
@@ -14,7 +14,7 @@ class AdminsController < ApplicationController
     .tap { |su| su.password = admin_user_params[:password] }
     if @admin_user.login_valid?
       session[:current_user] = true
-      redirect_to "/admin_blogs"
+      redirect_to blogs_admin_index_path
     else
       @admin_user.password = nil
       flash[:notice] = 'Sorry, wrong credentils'
@@ -22,8 +22,12 @@ class AdminsController < ApplicationController
     end
   end
 
+  def blogs
+    @blogs = Blog.all.recent
+  end
+
   def logout
     reset_session
-    redirect_to  "/admins"
+    redirect_to  admin_index_path
   end
 end

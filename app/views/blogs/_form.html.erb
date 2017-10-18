@@ -2,9 +2,9 @@
   <div class="l-header l-header-admin js-header">
     <div class="l-header-top u-clear">
       <div class="l-header-logo">
-        <a class="logo " href="./">
+        <%= link_to root_path, class: "logo" do %>
           <%= image_tag("logo-admin.png", height: "28", width: "138") %>
-        </a>
+        <% end %>
       </div>
       <div class="l-header-text">
         <p>ADMIN PAGE</p>
@@ -15,27 +15,27 @@
   <div class="l-container u-clear">
     <div class="l-main js-main">
     <div class="l-main-block"></div>
-      <label for="image" class="form-title">EYE CATCH IMAGE
-        <div class="form-file u-clear">
-          <span class="form-file-button">UPLOAD</span>
-        </div>
-      </label>
-      <%= f.file_field :eye_catch %>
-      <label for="title" class="form-title">TITLE</label>
-      <div class="form-body">
-        <%= f.input_field :title, class: "input input-text", id: "title" %>
+    <% if @blog.errors.present? %>
+      <% @blog.errors.full_messages.each do |message| %>
+        <div style="color: red;"><%= message  %></div>
+      <% end %>
+    <% end %>
+    <label for="image" class="form-title">EYE CATCH IMAGE
+      <div class="form-file u-clear">
+        <span class="form-file-button">UPLOAD</span>
       </div>
-      <label for="contents" class="form-title">CONTENTS</label>
-      <div class="form-textarea">
-        <%= f.input_field :contents, class: "input input-contents", id: "inquiry" %>
-      </div>
-      <%= f.submit "Submit", class: "form-button button button-text" %>
-      <a href="#" class="form-button">
-        <div class="button">
-          <p class="button-text">Back</p>
-        </div>
-      </a>
+    </label>
+    <%= f.file_field :eye_catch, class: "input input-image", id: "image" %>
+    <label for="title" class="form-title">TITLE</label>
+    <div class="form-body">
+      <%= f.input_field :title, class: "input input-text", id: "title" %>
     </div>
+    <label for="contents" class="form-title">CONTENTS</label>
+    <div class="form-textarea">
+      <%= f.input_field :contents, class: "input input-contents", id: "inquiry" %>
+    </div>
+    <%= f.submit "Submit", class: "form-button button button-text" %>
+    <%= link_to "Back", blogs_admin_index_path, class: "button button-text form-button" %>
   </div>
   <div class="l-footer l-footer-admin">
     <div class="l-footer-copyright">

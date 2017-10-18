@@ -29,35 +29,46 @@
   <input type="hidden" value="./" id="js-base-url">
 
   <div class="l-wrap js-wrap">
-    <div class="l-header l-header-admin js-header">
+    <div class="l-header  js-header">
       <div class="l-header-top u-clear">
         <div class="l-header-logo">
-          <%= link_to root_path, class: "logo" do %>
-            <%= image_tag("logo-admin.png", height: "28", width: "138") %>
-          <% end %>
+          <div class="logo ">
+            <%= image_tag("logo.png", height: "28", width: "138") %>
+          </div>
         </div>
-        <div class="l-header-text">
-          <p>ADMIN PAGE</p>
-        </div>
+        <%= render "toggle_list" %>
       </div>
     </div>
 
-    <div class="l-container u-clear content">
+    <div class="l-main js-main">
       <div class="l-main-block"></div>
-      <div style="color: red;"><%= flash[:notice] if flash[:notice]  %></div>
-      <%= form_for @admin_user, url: admin_index_path do |f| %>
-        <label for="user-id" class="form-title">USER ID</label>
-        <%= f.text_field :username, class: "input input-text", id: "user-id" %>
-        <label for="password" class="form-title">PASSWORD</label>
-        <%= f.password_field :password, class: "input input-text", id: "password" %>
-        <%= f.submit "Login", class: "form-button button button-text" %>
-      <% end %>
-    </div>
-
-    <div class="l-footer l-footer-admin">
-      <div class="l-footer-copyright">
-        <small class="copyright">&copy;copyright</small>
+      <div class="single">
+        <%= image_tag @blog.eye_catch.url(:original), class: "single-image" %>
+        <div class="l-container u-clear">
+          <h1 class="single-title"><%= @blog.title %></h1>
+          <div class="single-date" datetime="2016-9-16">
+            <%= @blog.created_at.strftime("%F") %>
+          </div>
+          <p class="single-desc">
+            <%= @blog.contents %>
+          </p>
+          <%= link_to "Top", blogs_path, class: "single-button button button-text" %>
+        </div>
       </div>
     </div>
   </div>
+  <div class="l-footer ">
+    <div class="l-footer-button">
+      <a class="page-top js-scroll" href="#js-body" id ="backToTopBtn">
+        <span class="page-top-arrow"></span>
+      </a>
+    </div>
+    <div class="l-footer-copyright">
+      <small class="copyright">&copy;copyright</small>
+    </div>
+  </div>
 </body>
+
+<% content_for :extra_javascripts do %>
+  <%= javascript_include_tag "blogs" %>
+<% end %>

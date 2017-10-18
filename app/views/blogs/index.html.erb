@@ -1,72 +1,84 @@
-<div class="l-wrap js-wrap">
-  <div class="l-header  js-header">
-    <div class="l-header-top u-clear">
-      <div class="l-header-logo">
-        <div class="logo ">
-          <%= image_tag("logo.png", height: "28", width: "138") %>
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="description" content="sample text,sample tex">
+  <meta name="keywords" content="word1,word2,word3">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta property="og:title" content="">
+  <meta property="og:description" content="sample text,sample tex">
+  <meta property="og:url" content="">
+  <meta property="og:site_name" content="">
+  <meta property="og:type" content="blog">
+  <meta property="fb:admins" content="">
+  <meta property="og:image" content="assets/images/common/ogp.png">
+
+  <meta name="apple-mobile-web-app-title" content="">
+
+  <link rel="shortcut icon" href="assets/images/common/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="images/common/apple-touch-icon-precomposed.png">
+
+</head>
+<body id="js-body">
+  <div id="fb-root"></div>
+
+  <noscript class="for-no-js">Javascriptを有効にしてください。</noscript>
+  <div class="for-old">お使いのOS・ブラウザでは、本サイトを適切に閲覧できない可能性があります。最新のブラウザをご利用ください。</div>
+
+  <input type="hidden" value="./" id="js-base-url">
+
+  <div class="l-wrap js-wrap">
+    <div class="l-header  js-header">
+      <div class="l-header-top u-clear">
+        <div class="l-header-logo">
+          <div class="logo ">
+            <%= image_tag("logo.png", height: "28", width: "138") %>
+          </div>
         </div>
+        <%= render "toggle_list" %>
       </div>
-      <div class="l-header-hamburger">
-        <a href="#" class="hamburger js-hamburger">
-          <span class="hamburger-item"></span>
-          <span class="hamburger-item"></span>
-          <span class="hamburger-item"></span>
+    </div>
+
+    <div class="l-container u-clear">
+      <div class="l-main js-main">
+        <div class="l-main-block"></div>
+        <div class="archive">
+          <ul class="archive-list">
+            <% @blogs.each do |blog| %>
+              <li class="archive-item">
+                <div class="card">
+                  <%= link_to single_view_blogs_path(blog_id: blog.id), class: "card-link" do %>
+                    <%= image_tag blog.eye_catch.url(:original), class: "card-image" %>
+                    <div class="card-bottom">
+                      <h1 class="card-title"><%= blog.title %></h1>
+                      <div class="card-date" datetime="2016-9-16">
+                        <%= blog.created_at.strftime("%F") %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <%= link_to "More", archive_blogs_path, class: "archive-button button button-text" %>
+      </div>
+    </div>
+
+    <div class="l-footer ">
+      <div class="l-footer-button">
+        <a class="page-top js-scroll" href="#top" id ="backToTopBtn">
+          <span class="page-top-arrow"></span>
         </a>
       </div>
-    </div>
-  </div>
-
-  <div class="nav js-nav">
-    <ul class="nav-list">
-      <li class="nav-item">
-      <a href="#" class="nav-link">TOP</a>
-      </li>
-      <li class="nav-item">
-      <a href="#" class="nav-link">Facebook</a>
-      </li>
-      <li class="nav-item">
-      <a href="#" class="nav-link">Twitter</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="l-container u-clear">
-    <div class="l-main js-main">
-      <div class="l-main-block"></div>
-      <div class="archive">
-        <ul class="archive-list">
-          <% @blogs.each do |blog| %>
-            <li class="archive-item">
-              <article class="card">
-                <a href="#" class="card-link">
-                  <%= image_tag blog.eye_catch.url(:original) %>
-                  <div class="card-bottom">
-                    <h1 class="card-title"><%= blog.title %></h1>
-                    <time class="card-date" datetime="2016-9-16">
-                      <%= blog.created_at.strftime("%F") %>
-                    </time>
-                  </div>
-                </a>
-              </article>
-            </li>
-          <% end %>
-        </ul>
+      <div class="l-footer-copyright">
+        <small class="copyright">&copy;copyright</small>
       </div>
-      <%= link_to "More", archive_blogs_path, class: "archive-button button button-text" %>
     </div>
   </div>
+</body>
 
-  <div class="l-footer ">
-    <div class="l-footer-button">
-      <a class="page-top js-scroll" href="#top" id ="backToTopBtn">
-        <span class="page-top-arrow"></span>
-      </a>
-    </div>
-    <div class="l-footer-copyright">
-      <small class="copyright">&copy;copyright</small>
-    </div>
-  </div>
-</div>
 <% content_for :extra_javascripts do %>
-  <%= javascript_include_tag "url_shortener" %>
+  <%= javascript_include_tag "blogs" %>
 <% end %>

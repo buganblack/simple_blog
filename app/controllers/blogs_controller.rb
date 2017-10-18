@@ -1,8 +1,10 @@
 class BlogsController < ApplicationController
   before_action :authentication_required!
 
+  BLOG_PER_PAGE = 5
+
   def index
-    @blogs = Blog.all.recent.first(5)
+    @blogs = Blog.all.recent.first(BLOG_PER_PAGE)
   end
 
   def new
@@ -18,8 +20,20 @@ class BlogsController < ApplicationController
     end
   end
 
+  def edit
+    @blog = Blog.find(params[:id])
+  end
+
+  def update
+  end
+
   def archive
-    @blogs = Blog.all
+    @blogs = Blog.all.recent.page(params[:page]).per(BLOG_PER_PAGE)
+    @total_page = @blogs.total_count / BLOG_PER_PAGE
+  end
+
+  def single_view
+    @blog = Blog.find(params[:blog_id])
   end
 
   private

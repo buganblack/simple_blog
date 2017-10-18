@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "simple_form"
 gem 'figaro'
 gem 'paperclip', '~> 4.2.2'
+gem 'kaminari'
 
 
 group :development, :test do

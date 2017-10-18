@@ -8,9 +8,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :blogs, only: [:index, :create, :new] do
+  resources :blogs do
     collection do
       get "archive"
+      get :single_view
     end
   end
 end

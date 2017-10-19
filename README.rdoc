@@ -1,28 +1,16 @@
-== README
+- clone the project
+- bundle install
+- create db (rake db:create)
+- migrate db (rake db:migrate) i did not make a seed since images are save on "public/assets"
+- create an "application.yml" in "config/" then create your desired admin username and password using:
+  ADMIN_USERNAME: "your desired username"
+  ADMIN_PASSWORD: "your desired password"
+- run the project (rails s)
+- root page is the index page for blogs, if you want to add articles visit "/admin"
+- login through admin using the credentials that you made, since admin is only one there is no need to make a db table for it
+  and no need to use "devise" gem, 
+- "new article" button lets you create new articles, clicking the article will also let you edit the specific article,
+  clicking the blog icon on the upper left will redirect you to root page / blogs index.
+- to visit "/admin" you need to logout first, visit "admin/blogs" then click logout button on the upper right
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+                                                                                                                                                                                                                                                                                                                                                                                                                                    

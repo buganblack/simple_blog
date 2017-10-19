@@ -3,7 +3,6 @@
   <title>Title</title>
   <meta name="description" content="sample text,sample tex">
   <meta name="keywords" content="word1,word2,word3">
-
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta property="og:title" content="">
@@ -13,13 +12,11 @@
   <meta property="og:type" content="blog">
   <meta property="fb:admins" content="">
   <meta property="og:image" content="assets/images/common/ogp.png">
-
   <meta name="apple-mobile-web-app-title" content="">
-
   <link rel="shortcut icon" href="assets/images/common/favicon.ico">
   <link rel="apple-touch-icon-precomposed" href="images/common/apple-touch-icon-precomposed.png">
-
 </head>
+
 <body id="js-body">
   <div id="fb-root"></div>
 
@@ -47,6 +44,9 @@
       <div class="l-main-block"></div>
       <%= link_to "New Article", new_blog_path, class: "button button-text l-main-button" %>
       <ul class="archive archive-admin">
+        <% if flash[:notice].present? %>
+          <div style="color: green;" id="flash"><%= flash[:notice]  %></div>
+        <% end %>
         <% @blogs.each do |blog| %>
           <li class="archive-item">
             <%= link_to edit_blog_path(blog), class: "post-article" do %>
@@ -67,3 +67,6 @@
   </div>
 </body>
 
+<% content_for :extra_javascripts do %>
+  <%= javascript_include_tag "admin" %>
+<% end %>

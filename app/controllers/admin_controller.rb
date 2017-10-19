@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+  before_filter :authentication_required!, only: ["blogs"]
+
   def index
     if session[:current_user]
       redirect_to blogs_admin_index_path
